@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: firstcj
+  labels:
+    env: dev
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - image: busybox:1.28
+              name: bb
+              command: ["sh", "-c", "echo '40daysofkubernetes' && date"]
+          restartPolicy: OnFailure
