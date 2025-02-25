@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    env: dev
+  name: staticpod
+spec:
+  nodeName: sparsh-worker 
+  containers:
+    - image: nginx
+      name: nginx
+      ports:
+       - containerPort: 80
+
