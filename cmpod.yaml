@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels: 
+    env: dev
+  name: cmpod
+spec:
+  containers:
+  - image: busybox:1.28
+    name: cmpod
+    command: ["sh", "-c", "echo $FIRSTNAME; sleep 300;"]
+    env:
+    - name: FIRSTNAME
+      valueFrom:
+        configMapKeyRef:
+          name: app-cm
+          key: firstname
